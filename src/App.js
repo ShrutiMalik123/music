@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import LandingScreen from "./screens/LandingScreen";
+import PlaylistScreen from "./screens/PlaylistScreen";
+
+const AppNavigator = createStackNavigator(
+  {
+    Landing: {
+      screen: LandingScreen
+    },
+    Playlist: {
+      screen: PlaylistScreen
+    }
+  },
+  { initialRouteName: "Landing" }
+);
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default function App() {
+  return <AppContainer />;
 }
-
-export default App;
